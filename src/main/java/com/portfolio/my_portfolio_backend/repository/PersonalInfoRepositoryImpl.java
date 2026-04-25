@@ -19,7 +19,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 
 @Repository
 @RequiredArgsConstructor
-public class IPersonalInfoRepositoryImpl implements IPersonalInfoRepository {
+public class PersonalInfoRepositoryImpl implements IPersonalInfoRepository {
     private final JdbcTemplate jdbcTemplate;
     private final RowMapper<PersonalInfo> personalInfoRowMapper = (ResultSet rs, int rowNum) -> {
         PersonalInfo info = new PersonalInfo();

@@ -1,25 +1,25 @@
 package com.portfolio.my_portfolio_backend.repository;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
+
 import com.portfolio.my_portfolio_backend.model.Skill;
 
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
-
-import java.sql.ResultSet;
-import java.util.List;
-import java.util.Optional;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
-import java.sql.PreparedStatement;
-import java.util.Objects;
-import org.springframework.dao.EmptyResultDataAccessException;
-
 @Repository
 @RequiredArgsConstructor
-public class ISkillRepositoryImpl implements ISkillRepository {
+public class SkillRepositoryImpl implements ISkillRepository {
     private final JdbcTemplate jdbcTemplate;
     private final RowMapper<Skill> skillRowMapper = (ResultSet rs, int rowNum) -> {
         Skill info = new Skill();
@@ -36,11 +36,11 @@ public class ISkillRepositoryImpl implements ISkillRepository {
     @Override
     public Skill save(Skill skill) {
         if (skill.getId() == null) {
-            String sql = "INSERT INTO skill ( " +
+            String sql = "INSERT INTO skills ( " +
                     "name, " +
                     "level_percentage, " +
                     "icon_class, " +
-                    "personal_info_id, " +
+                    "personal_info_id" +
                     ") VALUES (?, ?, ?, ?)";
 
             KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -66,7 +66,7 @@ public class ISkillRepositoryImpl implements ISkillRepository {
                     "name = ?, " +
                     "level_percentage = ?, " +
                     "icon_class = ?, " +
-                    "personal_info_id = ?, " +
+                    "personal_info_id = ? " +
                     "WHERE id = ?";
 
             jdbcTemplate.update(sql,
