@@ -29,36 +29,35 @@ public class PersonalInfoTestController {
     }
 
     @GetMapping("/all")
-    public List<PersonalInfo> getAllPersonalInfo() {
+    public List<PersonalInfo> getAllPersonalInfo(){
         return personalInfoService.findAll();
     }
 
     @GetMapping("/{id}")
-    public PersonalInfo getPersonalInfoById(@PathVariable Long id) {
+    public PersonalInfo getPersonalInfoById(@PathVariable Long id){
         Optional<PersonalInfo> info = personalInfoService.findById(id);
-
-        if (info.isPresent()) {
+        if(info.isPresent()) {
             return info.get();
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "PersonalInfo not found with id: " + id);
+        }else{
+            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Información personal no disponible en el ID: " + id);
         }
     }
 
     @PostMapping
-    public ResponseEntity<PersonalInfo> createPersonalInfo(@RequestBody PersonalInfo personalInfo) {
+    public ResponseEntity<PersonalInfo> createPersonalInfo(@RequestBody PersonalInfo personalInfo){
         PersonalInfo newPersonalInfo = personalInfoService.save(personalInfo);
-        
         return new ResponseEntity<>(newPersonalInfo, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public PersonalInfo update(@PathVariable Long id, @RequestBody PersonalInfo personalInfo) {
+    public PersonalInfo update( @PathVariable Long id, @RequestBody PersonalInfo personalInfo ){
         personalInfo.setId(id);
         return personalInfoService.save(personalInfo);
     }
 
+
     @DeleteMapping("/{id}")
-    public void deleteBy(@PathVariable Long id) {
+    public void deleteBy(@PathVariable Long id){
         personalInfoService.deleteById(id);
     }
 

@@ -1,5 +1,5 @@
 INSERT INTO personal_info (first_name, last_name, title, profile_description, profile_image_url, years_of_experience, email, phone, linkedin_url, github_url) VALUES
-('Juan', 'Perez', 'Full Stack Developer', 'Apasionado por el desarrollo web con experiencia en Java, Spring Boot y React. Disfruto construyendo soluciones robustas y escalables.', 'img/dev-gabriel.png', 5, 'juan.perez@example.com', '+5491112345678', 'https://linkedin.com/in/juanperez', 'https://github.com/juanperez');
+('Ana', 'Cilleruelo', 'Full Stack Developer', 'Química y Desarrolladora Web. Apasionada por el desarrollo web con experiencia en Java, Spring Boot y React. Disfruto construyendo soluciones robustas y escalables.', 'img/dev-ana.png', 5, 'acilleruelo@example.com', '+5491112345678', 'https://www.linkedin.com/in/ana-cilleruelo-gutierrez-0486051b0/', 'https://github.com/anacg096');
 
 INSERT INTO skills (name, level_percentage, icon_class, personal_info_id) VALUES
 ('Java', 90, 'img/logos/java.png', 1),

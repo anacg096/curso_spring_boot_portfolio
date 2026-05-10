@@ -17,10 +17,10 @@ import com.portfolio.my_portfolio_backend.service.IEducationService;
 
 @RestController
 @RequestMapping("/api/education")
-public class EducationController {
+public class EducationRestController {
     private final IEducationService educationService;
 
-    public EducationController(IEducationService educationService) {
+    public EducationRestController(IEducationService educationService) {
         this.educationService = educationService;
     }
 
@@ -49,5 +49,6 @@ public class EducationController {
     public void deleteById(@PathVariable Long id) {
         educationService.deleteById(id);
     }
+
 
 }
